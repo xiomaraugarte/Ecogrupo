@@ -1,41 +1,11 @@
-/*import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { colors } from '../constants/colors';
-
-export default function RegisterForm() {
-    return (
-        <View style={styles.container}>
-            <View style={styles.inputGroup}>
-                <Text style={styles.label}>Correo Electrónico</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="ejemplo@gmail.com"
-                    placeholderTextColor={colors.textMuted}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                />
-            </View>
-
-            <View style={styles.inputGroup}>
-                <Text style={styles.label}>Contraseña</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="****************"
-                    placeholderTextColor={colors.textMuted}
-                    secureTextEntry
-                />
-            </View>
-
-            <TouchableOpacity style={styles.forgotPasswordButton} activeOpacity={0.7}>
-                <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
-            </TouchableOpacity>
-        </View>
-    );
-}*/
-
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { colors } from '../constants/colors';
 
 type RegisterFormProps = {
+    nombre: string;
+    setNombre: (value: string) => void;
+    pais: string;
+    setPais: (value: string) => void;
     correo: string;
     setCorreo: (value: string) => void;
     contrasena: string;
@@ -43,6 +13,10 @@ type RegisterFormProps = {
 };
 
 export default function RegisterForm({
+    nombre,
+    setNombre,
+    pais,
+    setPais,
     correo,
     setCorreo,
     contrasena,
@@ -50,6 +24,30 @@ export default function RegisterForm({
 }: RegisterFormProps) {
     return (
         <View style={styles.container}>
+            <View style={styles.inputGroup}>
+                <Text style={styles.label}>Nombre</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="nombre"
+                    placeholderTextColor={colors.textMuted}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    value={nombre}
+                    onChangeText={setNombre}
+                />
+            </View>
+             <View style={styles.inputGroup}>
+                <Text style={styles.label}>País</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="pais"
+                    placeholderTextColor={colors.textMuted}
+                    autoCapitalize="none"
+                    value={pais}
+                    onChangeText={setPais}
+                />
+            </View>
+
             <View style={styles.inputGroup}>
                 <Text style={styles.label}>Correo Electrónico</Text>
                 <TextInput
@@ -74,10 +72,6 @@ export default function RegisterForm({
                     onChangeText={setContrasena}
                 />
             </View>
-
-            <TouchableOpacity style={styles.forgotPasswordButton} activeOpacity={0.7}>
-                <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
-            </TouchableOpacity>
             
         </View>
     );

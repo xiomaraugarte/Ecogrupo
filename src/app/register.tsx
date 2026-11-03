@@ -5,34 +5,17 @@ import Header from "@/components/Header";
 import RegisterForm from "@/components/RegisterForm";
 import { colors } from "@/constants/colors";
 import { useState } from "react";
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from "react-native";
 
 export default function Register() {
+    const [name, setName] = useState('');
+    const [pais, setPais] = useState('');
     const [correo, setCorreo] = useState('');
-    const [contrasena, setContrasena] = useState('');
+    const [contrasenia, setContrasenia] = useState('');
 
-    const CORREO_CORRECTO = 'xiomarocastro@gmail.com';
-    const CONTRASENA_CORRECTA = '12345678';
+    function verificarAcceso (){
 
-    const verificarAcceso = () => {
-        if (
-            correo.trim().toLowerCase() !== CORREO_CORRECTO ||
-            contrasena !== CONTRASENA_CORRECTA
-        ) {
-            Alert.alert(
-                'Acceso denegado',
-                'El correo electrónico o la contraseña son incorrectos.',
-                [{ text: 'Entendido' }]
-            );
-            return;
-        }
-
-        Alert.alert(
-            'Acceso correcto',
-            'Bienvenido. Tus credenciales son válidas.',
-            [{ text: 'Continuar' }]
-        );
-    };
+    }
 
     return (
         <KeyboardAvoidingView
@@ -42,10 +25,14 @@ export default function Register() {
             <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
                 <Header />
                 <RegisterForm
+                    nombre={name}
+                    setNombre={setName}
+                    pais={pais}
+                    setPais={setPais}
                     correo={correo}
                     setCorreo={setCorreo}
-                    contrasena={contrasena}
-                    setContrasena={setContrasena}
+                    contrasena={contrasenia}
+                    setContrasena={setContrasenia}
                 />
                 <Buttonprin />
                 <Buttonsec onPress={verificarAcceso} />
