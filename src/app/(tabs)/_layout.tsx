@@ -1,4 +1,3 @@
-
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from 'expo-router';
 import { colors } from '../../constants/colors';
@@ -13,29 +12,29 @@ export default function TabsLayout() {
                 tabBarInactiveTintColor: colors.primary,
 
                 tabBarStyle: {
-                    height: 100,
+                    height: 78,
                     backgroundColor: '#AFC99F',
                     borderTopWidth: 0,
                     elevation: 0,
                     shadowOpacity: 0,
-                    paddingTop: 14,
-                    paddingBottom: 14,
+                    paddingTop: 12,
+                    paddingBottom: 12,
                 },
 
                 tabBarItemStyle: {
-                    height: 72,
-                    marginTop: 5,
-                    marginHorizontal: 39,
-                    borderRadius: 24,
+                    height: 48,
+                    marginHorizontal: 8,
+                    borderRadius: 14,
                     overflow: 'hidden',
                 },
 
                 tabBarActiveBackgroundColor: '#FFFFFF',
 
                 tabBarIconStyle: {
-                    width: 64,
-                    height: 64,
-                    marginTop: 0,
+                    width: 32,
+                    height: 32,
+                    justifyContent: 'center',
+                    alignItems: 'center',
                 },
             }}
         >
@@ -50,7 +49,7 @@ export default function TabsLayout() {
                     tabBarIcon: () => (
                         <MaterialIcons
                             name="home"
-                            size={48}
+                            size={35}
                             color={colors.primary}
                         />
                     ),
@@ -63,8 +62,8 @@ export default function TabsLayout() {
                     title: 'Potted Plant',
                     tabBarIcon: () => (
                         <MaterialIcons
-                            name="yard"
-                            size={48}
+                            name="local-florist" // Cambiado para eliminar el cuadro rígido de 'yard'
+                            size={35}
                             color={colors.primary}
                         />
                     ),
@@ -78,7 +77,7 @@ export default function TabsLayout() {
                     tabBarIcon: () => (
                         <MaterialIcons
                             name="map"
-                            size={48}
+                            size={35}
                             color={colors.primary}
                         />
                     ),
@@ -92,7 +91,7 @@ export default function TabsLayout() {
                     tabBarIcon: () => (
                         <MaterialIcons
                             name="person"
-                            size={48}
+                            size={35}
                             color={colors.primary}
                         />
                     ),
