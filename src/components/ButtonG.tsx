@@ -1,9 +1,17 @@
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { colors } from '../constants/colors';
 
-export default function Buttonprin() {
+interface ButtonGProps {
+    onPress?: () => void;
+}
+
+export default function ButtonG({ onPress }: ButtonGProps) {
     return (
-        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+        <TouchableOpacity 
+            style={styles.button} 
+            activeOpacity={0.7}
+            onPress={onPress}
+        >
             <Image 
                 source={require('../../assets/images/Google.jpg')} 
                 style={styles.img}
@@ -25,8 +33,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingVertical: 12,
     },
-
     buttonText: { fontSize: 16, fontWeight: 'bold', color: colors.text },
-
-    img: { width: 24,  height: 24, },
+    img: { width: 24, height: 24 },
 });
