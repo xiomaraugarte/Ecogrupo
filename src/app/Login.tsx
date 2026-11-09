@@ -1,9 +1,11 @@
 /*import Buttonprin from "@/components/Button prin";
 import ButtonG from "@/components/ButtonG";
+import Buttonprin from "@/components/Buttonprin";
 import Buttonsec from "@/components/Buttonsec";
 import Header from "@/components/Header";
 import RegisterForm from "@/components/LoginForm";
 import { colors } from "@/constants/colors";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from "react-native";
 import { router } from "../../.expo/types/router";
@@ -11,6 +13,7 @@ import { router } from "../../.expo/types/router";
 export default function Login() {
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState('');
+    const router = useRouter();
 
     const CORREO_CORRECTO = 'xiomarocastro@gmail.com';
     const CONTRASENA_CORRECTA = '12345678';
@@ -31,8 +34,18 @@ export default function Login() {
         Alert.alert(
             'Acceso correcto',
             'Bienvenido. Tus credenciales son válidas.',
-            [{ text: 'Continuar' }]
+            [
+                { 
+                    text: 'Continuar', 
+                    onPress: () => router.replace('/Home') 
+                }
+            ]
         );
+    };
+
+    // Función para ir a la pantalla de registro
+    const irARegistro = () => {
+        router.push('/register'); // Asegúrate de que coincida con el nombre de tu archivo src/app/Register.tsx
     };
 
     return (
@@ -48,7 +61,8 @@ export default function Login() {
                     contrasena={contrasena}
                     setContrasena={setContrasena}
                 />
-                <Buttonprin />
+                {/* Le pasamos la función al botón de Registrarse */}
+                <Buttonprin onPress={irARegistro} />
                 <Buttonsec onPress={verificarAcceso} />
                 <ButtonG onPress={() => {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -57,7 +71,7 @@ export default function Login() {
                 {/* COMPONENTS: add each one right above this line 
             </ScrollView>
         </KeyboardAvoidingView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
