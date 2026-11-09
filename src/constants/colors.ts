@@ -5,5 +5,16 @@ export const colors = {
     text: '#1F1F1F',
     textMuted: '#7A7A7A',
     border: '#050505',
-    link: '#1E1B8B'
+    link: '#1E1B8B',
+    white: '#FFFFFF',
+    black: '#000000',
+    card: '#FFFFFF',
+    streak: '#354F19',
+    streakProgress: '#8BC63F',
+    incomplete: '#A5A5A5',
+    secondaryButton: '#263F73',
+    highlight: '#E6F2D8',
+    avatarBackground: '#42B5E5',
+    productBackground: '#DDE8D2',
+    heart: '#A83E2D',
 };
