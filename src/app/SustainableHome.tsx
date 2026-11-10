@@ -1,31 +1,91 @@
-import { StyleSheet, Text, View } from 'react-native';
+
+import { useState } from 'react';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { theme } from '../constants/theme';
+
+import ShoppingHeader from '../components/ShoppingHeader';
+import SustainableCategories from '../components/SustainableCategories';
+import SustainableProductDetail from '../components/SustainableProductDetail';
+import SustainableProductList from '../components/SustainableProductList';
+
+import { colors } from '../constants/colors';
+import type { SustainableProduct } from '../data/sustainableProducts';
 
 export default function SustainableHome() {
-  return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Hogar sostenible</Text>
+    const [selectedProduct, setSelectedProduct] =
+        useState<SustainableProduct | null>(null);
 
-        {/* COMPONENTS: add each one right above this line */}
-      </View>
-    </SafeAreaView>
-  );
+    const [quantities, setQuantities] =
+        useState<Record<string, number>>({});
+
+    const increaseQuantity = (id: string) => {
+        setQuantities(previous => ({
+            ...previous,
+            [id]: (previous[id] || 0) + 1,
+        }));
+    };
+
+    const decreaseQuantity = (id: string) => {
+        setQuantities(previous => ({
+            ...previous,
+            [id]: Math.max(0, (previous[id] || 0) - 1),
+        }));
+    };
+
+    return (
+        <SafeAreaView style={styles.container} edges={['top']}>
+            {selectedProduct ? (
+                <SustainableProductDetail
+                    product={selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
+            ) : (
+                <ScrollView
+                    style={styles.scroll}
+                    contentContainerStyle={styles.content}
+                    showsVerticalScrollIndicator={false}
+                >
+                    <ShoppingHeader />
+
+                    <SustainableCategories />
+
+                    <Text style={styles.description}>
+                        Compra a precio especial todo lo que necesitas
+                        para un hogar amigable con el medio ambiente!
+                    </Text>
+
+                    <SustainableProductList
+                        quantities={quantities}
+                        onIncrease={increaseQuantity}
+                        onDecrease={decreaseQuantity}
+                        onSelect={setSelectedProduct}
+                    />
+
+                    {/* COMPONENTS: add each one right above this line */}
+                </ScrollView>
+            )}
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.colors.background,
-  },
-  content: {
-    flex: 1,
-    padding: theme.spacing.md,
-  },
-  title: {
-    fontSize: theme.text.title,
-    fontWeight: '700',
-    color: theme.colors.primary,
-  },
+    container: {
+        flex: 1,
+        backgroundColor: colors.background,
+    },
+    scroll: {
+        flex: 1,
+    },
+    content: {
+        paddingHorizontal: 16,
+        paddingBottom: 45,
+    },
+    description: {
+        fontSize: 16,
+        lineHeight: 22,
+        color: colors.text,
+        textAlign: 'center',
+        marginTop: 34,
+        marginBottom: 40,
+    },
 });

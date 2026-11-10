@@ -18,5 +18,7 @@ export const colors = {
     productBackground: '#DDE8D2',
     heart: '#A83E2D',
     controlBackground: '#E3E0E0',
-    
+    sustainableSelected: '#DCEAB9',
+    sustainableBorder: '#17694C',
+    detailBackground: '#F8F8F8',
 };
