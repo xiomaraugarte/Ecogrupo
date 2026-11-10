@@ -11,13 +11,13 @@ import { theme } from '../../constants/theme';
 export default function Home() {
     return (
         <View style={styles.container}>
-            <HomeProfileHeader/>
-            <HomeUserSummary/>
-            <HomeRankingCard/>
-            <HomeRecyclingCard/>
-            <HomeImpactStats/>
-            <HomeProductCard/>
-            <HomeBottomNavigation/>
+            <HomeProfileHeader />
+            <HomeUserSummary />
+            <HomeRankingCard />
+            <HomeRecyclingCard />
+            <HomeImpactStats />
+            <HomeProductCard />
+            <HomeBottomNavigation />
             {/* COMPONENTS: add each one right above this line */}
         </View>
     );
