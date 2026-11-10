@@ -57,12 +57,12 @@ export default function TabsLayout() {
             />
 
             <Tabs.Screen
-                name="shopping_cart"
+                name="shopping"
                 options={{
                     title: 'Potted Plant',
                     tabBarIcon: () => (
                         <MaterialIcons
-                            name="local-florist" // Cambiado para eliminar el cuadro rígido de 'yard'
+                            name="local-florist"
                             size={35}
                             color={colors.primary}
                         />
