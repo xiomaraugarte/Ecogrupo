@@ -17,6 +17,7 @@ export const colors = {
     avatarBackground: '#42B5E5',
     productBackground: '#DDE8D2',
     heart: '#A83E2D',
+    danger: '#D32F2F',
     controlBackground: '#E3E0E0',
     
 };
