@@ -1,3 +1,4 @@
+
 import ButtonG from "@/components/ButtonG";
 import Buttonprin from "@/components/Buttonprin";
 import Buttonsec from "@/components/Buttonsec";
@@ -5,10 +6,12 @@ import Header from "@/components/Header";
 import RegisterForm from "@/components/LoginForm";
 import { colors } from "@/constants/colors";
 import * as Haptics from 'expo-haptics';
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from "react-native";
 
 export default function Login() {
+    const router = useRouter();
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState('');
 
@@ -31,7 +34,12 @@ export default function Login() {
         Alert.alert(
             'Acceso correcto',
             'Bienvenido. Tus credenciales son válidas.',
-            [{ text: 'Continuar' }]
+            [
+                { 
+                    text: 'Continuar',
+                    onPress: () => router.replace('/Home')
+                }
+            ]
         );
     };
 
@@ -48,8 +56,11 @@ export default function Login() {
                     contrasena={contrasena}
                     setContrasena={setContrasena}
                 />
-                <Buttonprin />
+                
+                <Buttonprin onPress={() => router.push('/register')} />
+
                 <Buttonsec onPress={verificarAcceso} />
+
                 <ButtonG onPress={() => {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                 }} />
