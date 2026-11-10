@@ -19,5 +19,7 @@ export const colors = {
     heart: '#A83E2D',
     danger: '#D32F2F',
     controlBackground: '#E3E0E0',
-    
+    sustainableSelected: '#DCEAB9',
+    sustainableBorder: '#17694C',
+    detailBackground: '#F8F8F8',
 };
