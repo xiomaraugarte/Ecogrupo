@@ -22,4 +22,9 @@ export const colors = {
     sustainableSelected: '#DCEAB9',
     sustainableBorder: '#17694C',
     detailBackground: '#F8F8F8',
+    recyclingCard: '#195B47',
+    recyclingButton: '#2D466B',
+    recyclingOverlay: '#00000066',
+    recyclingSuccessCircle: '#85BCAA',
+    recyclingModalBackground: '#FFFFFF',
 };
