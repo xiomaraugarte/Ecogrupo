@@ -12,29 +12,26 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/Ecogrupo.png"
-      },
-      "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.Ecogrupo"
+  "backgroundColor": "#E6F4FE",
+  "foregroundImage": "./assets/images/Ecogrupo.png"
+},
+      "predictiveBackGestureEnabled": false
     },
     "web": {
-      "output": "single",
-      "favicon": "./assets/images/Ecogrupo.png"
-    },
+  "output": "single",
+  "favicon": "./assets/images/Ecogrupo.png"
+},
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
+          "backgroundColor": "#208AEF",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#F6F4EF"
+          "imageWidth": 76
         }
       ],
-      "expo-font",
-      "@maplibre/maplibre-react-native"
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true,
