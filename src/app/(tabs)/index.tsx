@@ -1,13 +1,11 @@
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../../constants/colors';
-import Home from "./Home";
 
 export default function Index() {
   return (
     <SafeAreaView style={styles.screen}>
-      <Home />
-    </SafeAreaView>
+     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
