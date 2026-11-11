@@ -1,56 +1,50 @@
-# Welcome to your Expo app 👋
+# Ecogrupo 🌱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Ecogrupo es una aplicación móvil que promueve el hábito del reciclaje mediante el registro de lo que reciclan, las personas van a puntos de acopio, en la app ponen un código que se les da y con eso ganan puntos que pueden canjear comprando productos orgnánicos de la canasta familiar, y cada semana que reciclen suman semanas de racha y pueden participar en un ranking con sus amigos para ver quien recicla más. Su objetivo es motivar a los usuarios a reciclar de manera constante y convertir esta acción en parte de su rutina haciendo que lo vean como algo mucho más entetenido y beneficiso más allá del cuidado del medio ambiente.
 
-## Get started
+## Cómo correrla
 
-1. Install dependencies
+Para ejecutar la aplicación, abre la terminal en la carpeta del proyecto y utiliza los siguientes comandos:
 
-   ```bash
-   npm install
-   ```
+npm install
+npx expo start
 
-2. Start the app
+Luego, escanea el código QR con Expo Go para visualizar la aplicación en tu dispositivo móvil.
 
-   ```bash
-   npx expo start
-   ```
+## Cómo está organizado el código
 
-In the output, you'll find options to open the app in a
+El proyecto está desarrollado con React Native y Expo, utilizando una estructura modular para facilitar la organización, mantenimiento y reutilización de componentes.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- app/: Contiene las pantallas principales de la aplicación, como Home, Shopping y Profile, además de la configuración de navegación.
+- components/: Incluye componentes reutilizables de la interfaz, como tarjetas, botones, indicadores de racha y ventanas emergentes.
+- context/: Administra los estados y datos compartidos entre diferentes pantallas mediante React Context, permitiendo mantener sincronizada la información de la aplicación.
+- data/: Contiene los datos utilizados por la aplicación, como listas de productos, categorías y otra información necesaria para mostrar contenido en las vistas.
+- storage/: Gestiona el almacenamiento local de información, permitiendo conservar los datos y registros del usuario.
+- constants/: Contiene los colores, estilos y otras configuraciones visuales compartidas.
+- assets/: Almacena imágenes, íconos e ilustraciones utilizados en la aplicación.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Distribución del trabajo
 
-## Get a fresh project
+Cada integrante del equipo desarrolló las vistas y componentes correspondientes a su rama de trabajo, integrándolos al proyecto mediante Pull Requests.
 
-When you're ready, run:
+Pop-up "reciclaje exitoso" = Estefania Antezana
+Mapa puntos de acopio = Laila Ugarte
+Pop-up "registrar puntos" = Estefania Antezana
+Canasta familiar = Estefania Antezana
+Hogar sostenible = Estefania Antezana
+Home = Estefania Antezana
+Perfil = Estefania Antezana
+Pop-up "cantidad de puntos que puede ganar" = Estefania Antezana
+Login = Laila Ugarte
+Registrarse = Laila Ugarte
+Animación de cargando = Laila Ugarte
+Información de los puntos de acopio = Laila Ugarte
+Carrito = Laila Ugarte
+Animación racha = Estefania Antezana
+Pop-up "más información del producto" = Estefania Antezana
+Pop-up "error" = Laila Ugarte
+Readme = Estefania Antezana
 
-```bash
-npm run reset-project
-```
+## Cambio de requisito
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Se reemplazó la funcionalidad de notificaciones por un mapa de parques cercanos, con el propósito de incentivar la actividad del usuario a través de la exploración de espacios verdes. Este cambio busca que el hábito se active al salir e interactuar con el entorno, en lugar de depender de recordatorios mediante notificaciones.
