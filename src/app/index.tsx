@@ -2,13 +2,13 @@
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../constants/colors';
-import Login from "./Login";
+import Success from "./success";
 
 export default function Index() {
   return (
     <SafeAreaView style={styles.screen}>
       {/* <Login /> */}
-      <Login />
+      <Success />
     </SafeAreaView>
   );
 }
