@@ -27,4 +27,12 @@ export const colors = {
     recyclingOverlay: '#00000066',
     recyclingSuccessCircle: '#85BCAA',
     recyclingModalBackground: '#FFFFFF',
+    recyclingPointsBackground: '#195B47',
+    recyclingPointsOverlay: 'rgba(0, 0, 0, 0.35)',
+    recyclingPointsFrame: '#F3F8EF',
+    rankingCard: '#B6DE8D',
+    rankingText: '#176149',
+    rankingTrophy: '#FFB52E',
+    rankingProgressBackground: '#438400',
+    rankingProgress: '#14523D',
 };

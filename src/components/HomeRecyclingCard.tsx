@@ -3,21 +3,24 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 import { colors } from '@/constants/colors';
 import RecyclingCodeModal from './RecyclingCodeModal';
+import RecyclingPointsModal from './RecyclingPointsModal';
 
 export default function HomeRecyclingCard() {
   const router = useRouter();
-  const [modalVisible, setModalVisible] = useState(false);
+
+  const [codeModalVisible, setCodeModalVisible] = useState(false);
+  const [pointsModalVisible, setPointsModalVisible] = useState(false);
 
   const handleAccept = () => {
-    setModalVisible(false);
+    setCodeModalVisible(false);
     router.push('/RecyclingSuccess');
   };
 
@@ -46,26 +49,34 @@ export default function HomeRecyclingCard() {
         <View style={styles.buttons}>
           <Pressable
             style={styles.button}
-            onPress={() => setModalVisible(true)}
+            onPress={() => setCodeModalVisible(true)}
           >
             <Text style={styles.buttonText}>
               Registrar
             </Text>
           </Pressable>
 
-          <View style={styles.button}>
+          <Pressable
+            style={styles.button}
+            onPress={() => setPointsModalVisible(true)}
+          >
             <Text style={styles.buttonText}>
               ¿Cuántos puntos
               {'\n'}puedo ganar?
             </Text>
-          </View>
+          </Pressable>
         </View>
       </View>
 
       <RecyclingCodeModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
+        visible={codeModalVisible}
+        onClose={() => setCodeModalVisible(false)}
         onAccept={handleAccept}
+      />
+
+      <RecyclingPointsModal
+        visible={pointsModalVisible}
+        onClose={() => setPointsModalVisible(false)}
       />
     </>
   );
@@ -78,27 +89,33 @@ const styles = StyleSheet.create({
     padding: 20,
     gap: 14,
   },
+
   top: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
   },
+
   textContainer: {
     flex: 1,
   },
+
   title: {
     color: colors.white,
     fontSize: 19,
     fontWeight: 'bold',
   },
+
   description: {
     color: colors.white,
     fontSize: 14,
   },
+
   buttons: {
     flexDirection: 'row',
     gap: 10,
   },
+
   button: {
     flex: 1,
     minHeight: 48,
@@ -109,6 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   buttonText: {
     color: colors.white,
     textAlign: 'center',
