@@ -1,6 +1,13 @@
 
 import { MaterialIcons } from '@expo/vector-icons';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { theme } from '../constants/theme';
 
 const weeks = [
@@ -12,12 +19,20 @@ const weeks = [
 ];
 
 export default function ProfileStreakCard() {
+  const router = useRouter();
+
+  const handleRegister = () => {
+    router.push('/StreakSuccess');
+  };
+
   return (
     <View style={styles.card}>
       <Text style={styles.number}>12</Text>
+
       <Text style={styles.title}>Semanas de racha</Text>
+
       <Image
-        source={require('../../assets/images/racha_inactiva.png')}
+        source={require('../../assets/images/rachi.png')}
         style={styles.character}
         resizeMode="contain"
       />
@@ -27,7 +42,9 @@ export default function ProfileStreakCard() {
       <View style={styles.weeks}>
         {weeks.map((week) => (
           <View key={week.label} style={styles.week}>
-            <Text style={styles.weekLabel}>{week.label}</Text>
+            <Text style={styles.weekLabel}>
+              {week.label}
+            </Text>
 
             <View
               style={[
@@ -51,8 +68,14 @@ export default function ProfileStreakCard() {
         ¡Recicla esta semana y mantén viva tu racha!
       </Text>
 
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Registrar reciclaje</Text>
+      <Pressable
+        style={styles.button}
+        onPress={handleRegister}
+        accessibilityRole="button"
+      >
+        <Text style={styles.buttonText}>
+          Registrar reciclaje
+        </Text>
       </Pressable>
     </View>
   );
