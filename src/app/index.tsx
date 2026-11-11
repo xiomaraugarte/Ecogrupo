@@ -2,13 +2,13 @@
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../constants/colors';
-import Shopping from './(tabs)/shopping';
+import Login from "./Login";
 
 export default function Index() {
   return (
     <SafeAreaView style={styles.screen}>
       {/* <Login /> */}
-      <Shopping />
+      <Login />
     </SafeAreaView>
   );
 }

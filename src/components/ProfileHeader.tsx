@@ -1,9 +1,12 @@
-
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { theme } from '../constants/theme';
 
 export default function ProfileHeader() {
+
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <Image
@@ -12,7 +15,10 @@ export default function ProfileHeader() {
         resizeMode="contain"
       />
 
-      <Pressable style={styles.cartButton}>
+      <Pressable
+        style={styles.cartButton}
+        onPress={() => router.push('/cart')}
+      >
         <MaterialIcons
           name="shopping-cart"
           size={theme.icon.lg}
