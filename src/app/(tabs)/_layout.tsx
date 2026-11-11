@@ -1,3 +1,4 @@
+
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from 'expo-router';
 import { colors } from '../../constants/colors';
@@ -40,12 +41,8 @@ export default function TabsLayout() {
         >
             <Tabs.Screen
                 name="Home"
-                options={{ href: null }}
-            />
-            <Tabs.Screen
-                name="index"
                 options={{
-                    title: 'Menú',
+                    title: 'Inicio',
                     tabBarIcon: () => (
                         <MaterialIcons
                             name="home"
@@ -54,6 +51,11 @@ export default function TabsLayout() {
                         />
                     ),
                 }}
+            />
+
+            <Tabs.Screen
+                name="index"
+                options={{ href: null }}
             />
 
             <Tabs.Screen

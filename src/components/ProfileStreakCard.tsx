@@ -29,7 +29,9 @@ export default function ProfileStreakCard() {
     <View style={styles.card}>
       <Text style={styles.number}>12</Text>
 
-      <Text style={styles.title}>Semanas de racha</Text>
+      <Text style={styles.title}>
+        Semanas de racha
+      </Text>
 
       <Image
         source={require('../../assets/images/rachi.png')}
@@ -156,3 +158,4 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
