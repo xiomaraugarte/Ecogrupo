@@ -91,4 +91,5 @@ export const shoppingProducts: ShoppingProduct[] = [
     price: 12,
     image: require('../../assets/images/arveja.png'),
   },
+  
 ];
