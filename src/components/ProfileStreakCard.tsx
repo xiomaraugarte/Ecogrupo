@@ -1,10 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-
 import { theme } from "../constants/theme";
-import RecyclingCodeModal from "./RecyclingCodeModal";
 
 const weeks = [
   { label: "S9", completed: true },
@@ -17,66 +14,59 @@ const weeks = [
 export default function ProfileStreakCard() {
   const router = useRouter();
 
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const handleAccept = () => {
-    setModalVisible(false);
-    router.push("/RecyclingSuccess");
+  const handleRegister = () => {
+    router.push("./StreakSuccess");
   };
 
   return (
-    <>
-      <View style={styles.card}>
-        <Text style={styles.number}>12</Text>
+    <View style={styles.card}>
+      <Text style={styles.number}>12</Text>
 
-        <Text style={styles.title}>Semanas de racha</Text>
+      <Text style={styles.title}>Semanas de racha</Text>
 
-        <Image
-          source={require("../../assets/images/racha_inactiva.png")}
-          style={styles.character}
-          resizeMode="contain"
-        />
+      <Image
+        source={require("../../assets/images/rachi.png")}
+        style={styles.character}
+        resizeMode="contain"
+      />
 
-        <View style={styles.divider} />
+      <View style={styles.divider} />
 
-        <View style={styles.weeks}>
-          {weeks.map((week) => (
-            <View key={week.label} style={styles.week}>
-              <Text style={styles.weekLabel}>{week.label}</Text>
+      <View style={styles.weeks}>
+        {weeks.map((week) => (
+          <View key={week.label} style={styles.week}>
+            <Text style={styles.weekLabel}>{week.label}</Text>
 
-              <View
-                style={[
-                  styles.weekCircle,
-                  !week.completed && styles.incompleteCircle,
-                ]}
-              >
-                {week.completed && (
-                  <MaterialIcons
-                    name="check"
-                    size={theme.icon.md}
-                    color={theme.colors.black}
-                  />
-                )}
-              </View>
+            <View
+              style={[
+                styles.weekCircle,
+                !week.completed && styles.incompleteCircle,
+              ]}
+            >
+              {week.completed && (
+                <MaterialIcons
+                  name="check"
+                  size={theme.icon.md}
+                  color={theme.colors.black}
+                />
+              )}
             </View>
-          ))}
-        </View>
-
-        <Text style={styles.message}>
-          ¡Recicla esta semana y mantén viva tu racha!
-        </Text>
-
-        <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
-          <Text style={styles.buttonText}>Registrar reciclaje</Text>
-        </Pressable>
+          </View>
+        ))}
       </View>
 
-      <RecyclingCodeModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onAccept={handleAccept}
-      />
-    </>
+      <Text style={styles.message}>
+        ¡Recicla esta semana y mantén viva tu racha!
+      </Text>
+
+      <Pressable
+        style={styles.button}
+        onPress={handleRegister}
+        accessibilityRole="button"
+      >
+        <Text style={styles.buttonText}>Registrar reciclaje</Text>
+      </Pressable>
+    </View>
   );
 }
 
@@ -101,8 +91,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   character: {
-    width: 304,
-    height: 308,
+    width: "80%",
+    height: 245,
     marginTop: theme.spacing.xs,
     marginBottom: theme.spacing.sm,
   },
