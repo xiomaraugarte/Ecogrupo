@@ -4,16 +4,16 @@
     "slug": "Ecogrupo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/Ecogrupo-icon.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "ecogrupo",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/images/Ecogrupo-icon.png"
+      "icon": "./assets/images/icon.png"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/Ecogrupo-icon.png"
+        "backgroundColor": "#155941",
+        "foregroundImage": "./assets/images/adaptive-icon.png"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.anonymous.ecogrupo",
