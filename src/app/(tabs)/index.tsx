@@ -5,6 +5,7 @@ import { colors } from '../../constants/colors';
 export default function Index() {
   return (
     <SafeAreaView style={styles.screen}>
+    
      </SafeAreaView>
   );
 }
