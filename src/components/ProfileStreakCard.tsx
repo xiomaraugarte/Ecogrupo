@@ -1,24 +1,17 @@
+import { MaterialIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-import { MaterialIcons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import { useState } from 'react';
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-
-import { theme } from '../constants/theme';
-import RecyclingCodeModal from './RecyclingCodeModal';
+import { theme } from "../constants/theme";
+import RecyclingCodeModal from "./RecyclingCodeModal";
 
 const weeks = [
-  { label: 'S9', completed: true },
-  { label: 'S10', completed: true },
-  { label: 'S11', completed: true },
-  { label: 'S12', completed: true },
-  { label: 'S13', completed: false },
+  { label: "S9", completed: true },
+  { label: "S10", completed: true },
+  { label: "S11", completed: true },
+  { label: "S12", completed: true },
+  { label: "S13", completed: false },
 ];
 
 export default function ProfileStreakCard() {
@@ -28,7 +21,7 @@ export default function ProfileStreakCard() {
 
   const handleAccept = () => {
     setModalVisible(false);
-    router.push('/RecyclingSuccess');
+    router.push("/RecyclingSuccess");
   };
 
   return (
@@ -36,12 +29,10 @@ export default function ProfileStreakCard() {
       <View style={styles.card}>
         <Text style={styles.number}>12</Text>
 
-        <Text style={styles.title}>
-          Semanas de racha
-        </Text>
+        <Text style={styles.title}>Semanas de racha</Text>
 
         <Image
-          source={require('../../assets/images/racha_inactiva.png')}
+          source={require("../../assets/images/racha_inactiva.png")}
           style={styles.character}
           resizeMode="contain"
         />
@@ -51,9 +42,7 @@ export default function ProfileStreakCard() {
         <View style={styles.weeks}>
           {weeks.map((week) => (
             <View key={week.label} style={styles.week}>
-              <Text style={styles.weekLabel}>
-                {week.label}
-              </Text>
+              <Text style={styles.weekLabel}>{week.label}</Text>
 
               <View
                 style={[
@@ -77,13 +66,8 @@ export default function ProfileStreakCard() {
           ¡Recicla esta semana y mantén viva tu racha!
         </Text>
 
-        <Pressable
-          style={styles.button}
-          onPress={() => setModalVisible(true)}
-        >
-          <Text style={styles.buttonText}>
-            Registrar reciclaje
-          </Text>
+        <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
+          <Text style={styles.buttonText}>Registrar reciclaje</Text>
         </Pressable>
       </View>
 
@@ -102,39 +86,39 @@ const styles = StyleSheet.create({
     borderRadius: theme.radius.lg,
     paddingTop: theme.spacing.sm,
     paddingBottom: theme.spacing.lg,
-    alignItems: 'center',
-    overflow: 'hidden',
+    alignItems: "center",
+    overflow: "hidden",
   },
   number: {
     fontSize: 48,
-    fontWeight: '900',
+    fontWeight: "900",
     lineHeight: 55,
     color: theme.colors.white,
   },
   title: {
     fontSize: theme.text.title + theme.spacing.xs,
     color: theme.colors.white,
-    textAlign: 'center',
+    textAlign: "center",
   },
   character: {
-    width: '80%',
-    height: 245,
+    width: 304,
+    height: 308,
     marginTop: theme.spacing.xs,
     marginBottom: theme.spacing.sm,
   },
   divider: {
-    width: '100%',
+    width: "100%",
     height: 1,
     backgroundColor: theme.colors.white,
   },
   weeks: {
-    width: '90%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: "90%",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: theme.spacing.sm + theme.spacing.xs,
   },
   week: {
-    alignItems: 'center',
+    alignItems: "center",
     gap: theme.spacing.xs,
   },
   weekLabel: {
@@ -146,8 +130,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: theme.radius.full,
     backgroundColor: theme.colors.streakProgress,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   incompleteCircle: {
     backgroundColor: theme.colors.incomplete,
@@ -156,7 +140,7 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
     fontSize: theme.text.small,
     marginTop: theme.spacing.sm,
-    textAlign: 'center',
+    textAlign: "center",
   },
   button: {
     backgroundColor: theme.colors.secondaryButton,
@@ -168,6 +152,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: theme.colors.white,
     fontSize: theme.text.body,
-    fontWeight: '700',
+    fontWeight: "700",
   },
 });

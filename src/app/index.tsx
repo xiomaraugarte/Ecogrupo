@@ -1,14 +1,17 @@
-
+import RecyclingCodeModal from "@/components/RecyclingCodeModal";
 import { StyleSheet } from "react-native";
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors } from '../constants/colors';
-import Success from "./success";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "../constants/colors";
 
 export default function Index() {
   return (
     <SafeAreaView style={styles.screen}>
       {/* <Login /> */}
-      <Success />
+      <RecyclingCodeModal
+        visible={true}
+        onClose={() => {}}
+        onAccept={() => {}}
+      />
     </SafeAreaView>
   );
 }

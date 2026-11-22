@@ -1,5 +1,4 @@
-
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from "@expo/vector-icons";
 import {
   Image,
   Pressable,
@@ -7,30 +6,28 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native';
-import { theme } from '../constants/theme';
+} from "react-native";
+import { theme } from "../constants/theme";
 
 const wishlist = [
   {
-    id: '1',
-    name: 'Tomate',
-    points: '40 puntos',
-    image: require('../../assets/images/tomate.png'), 
+    id: "1",
+    name: "Tomate",
+    points: "40 puntos",
+    image: require("../../assets/images/tomate.png"),
   },
   {
-    id: '2',
-    name: 'Lechuga',
-    points: '45 puntos',
-    image: require('../../assets/images/lechuga.png'), 
+    id: "2",
+    name: "Lechuga",
+    points: "45 puntos",
+    image: require("../../assets/images/lechuga.png"),
   },
 ];
 
 export default function ProfileWishlist() {
   return (
     <View style={styles.container}>
-      <Text style={styles.subtitle}>
-        ¡Mira todo lo que te falta comprar!
-      </Text>
+      <Text style={styles.subtitle}>¡Mira todo lo que te falta comprar!</Text>
 
       <Text style={styles.title}>Lista de deseos</Text>
 
@@ -77,12 +74,12 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: theme.text.heading,
-    fontWeight: '600',
+    fontWeight: "600",
     color: theme.colors.text,
   },
   title: {
     fontSize: theme.text.display,
-    fontWeight: '900',
+    fontWeight: "900",
     color: theme.colors.text,
   },
   products: {
@@ -105,20 +102,20 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
   },
   productImage: {
-    width: '100%',
-    height: 145,
+    width: "100%",
+    height: 152,
     backgroundColor: theme.colors.productBackground,
   },
   name: {
     fontSize: theme.text.body,
-    fontWeight: '700',
+    fontWeight: "700",
     color: theme.colors.text,
     marginTop: theme.spacing.xs,
   },
   details: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   points: {
     fontSize: theme.text.small,
@@ -128,13 +125,13 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: theme.radius.sm,
     backgroundColor: theme.colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: theme.spacing.xs,
   },
   buttonText: {
     color: theme.colors.white,
     fontSize: theme.text.body,
-    fontWeight: '700',
+    fontWeight: "700",
   },
 });

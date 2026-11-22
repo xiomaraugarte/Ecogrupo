@@ -19,7 +19,7 @@
       "package": "com.anonymous.Ecogrupo"
     },
     "web": {
-      "output": "single",
+      "output": "static",
       "favicon": "./assets/images/Ecogrupo.png"
     },
     "plugins": [
@@ -34,7 +34,8 @@
         }
       ],
       "expo-font",
-      "@maplibre/maplibre-react-native"
+      "@maplibre/maplibre-react-native",
+      "expo-image"
     ],
     "experiments": {
       "typedRoutes": true,
