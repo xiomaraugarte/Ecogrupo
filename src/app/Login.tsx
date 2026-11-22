@@ -25,7 +25,7 @@ export default function Login() {
         ) {
             Alert.alert(
                 'Acceso denegado',
-                'El correo electrónico o la contraseña son incorrectos.',
+                'Prueba y examen',
                 [{ text: 'Entendido' }]
             );
             return;

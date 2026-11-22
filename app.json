@@ -4,19 +4,20 @@
     "slug": "Ecogrupo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/Ecogrupo.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "ecogrupo",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/images/icon.png"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/Ecogrupo.png"
+        "backgroundColor": "#155941",
+        "foregroundImage": "./assets/images/adaptive-icon.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.Ecogrupo"
+      "package": "com.anonymous.ecogrupo",
+      "versionCode": 1
     },
     "web": {
       "output": "single",
@@ -27,7 +28,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/Ecogrupo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#F6F4EF"
@@ -39,6 +40,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4d39cc08-acf8-4c46-848c-3988524c3ee8"
+      }
     }
   }
 }

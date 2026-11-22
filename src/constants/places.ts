@@ -44,4 +44,16 @@ export const PLACES: Place[] = [
     xPercent: 72,
     yPercent: 80,
   },
+
+    {
+    id: '4',
+    name: 'Punto de acopio',
+    address: 'jajsjasjajj',
+    distance: 'A 550 m de ti',
+    materials: 'Pilas, Baterías y Electrónicos',
+    latitude: -17.388,
+    longitude: -66.153,
+    xPercent: 72,
+    yPercent: 80,
+  },
 ];
