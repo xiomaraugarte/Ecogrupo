@@ -1,16 +1,15 @@
-
-import { colors } from '@/constants/colors';
-import { MaterialIcons } from '@expo/vector-icons';
-import { useState } from 'react';
+import { colors } from "@/constants/colors";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useState } from "react";
 import {
-    Keyboard,
-    Modal,
-    Pressable,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
-} from 'react-native';
+  Keyboard,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 type Props = {
   visible: boolean;
@@ -23,20 +22,20 @@ export default function RecyclingCodeModal({
   onClose,
   onAccept,
 }: Props) {
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
 
   const handleAccept = () => {
-    if (code.trim() === '') {
+    if (code.trim() === "") {
       return;
     }
 
     Keyboard.dismiss();
-    setCode('');
+    setCode("");
     onAccept();
   };
 
   const handleClose = () => {
-    setCode('');
+    setCode("");
     onClose();
   };
 
@@ -54,20 +53,14 @@ export default function RecyclingCodeModal({
             onPress={handleClose}
             accessibilityLabel="Cerrar"
           >
-            <MaterialIcons
-              name="close"
-              size={32}
-              color={colors.text}
-            />
+            <MaterialIcons name="close" size={32} color={colors.text} />
           </Pressable>
 
-          <Text style={styles.title}>
-            Registrar el código
-          </Text>
+          <Text style={styles.title}>Registrar el código</Text>
 
           <Text style={styles.description}>
             Introduzca el código que sale en la
-            {'\n'}maquina abajo
+            {"\n"}maquina abajo
           </Text>
 
           <TextInput
@@ -79,13 +72,8 @@ export default function RecyclingCodeModal({
             autoCapitalize="none"
           />
 
-          <Pressable
-            style={styles.acceptButton}
-            onPress={handleAccept}
-          >
-            <Text style={styles.acceptText}>
-              Aceptar
-            </Text>
+          <Pressable style={styles.acceptButton} onPress={handleAccept}>
+            <Text style={styles.acceptText}>Aceptar</Text>
           </Pressable>
         </View>
       </View>
@@ -97,7 +85,7 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     backgroundColor: colors.recyclingOverlay,
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingHorizontal: 18,
   },
   modal: {
@@ -111,7 +99,7 @@ const styles = StyleSheet.create({
     minHeight: 370,
   },
   closeButton: {
-    position: 'absolute',
+    position: "absolute",
     right: 12,
     top: 10,
     padding: 4,
@@ -119,7 +107,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.text,
     marginBottom: 16,
   },
@@ -142,15 +130,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.recyclingButton,
     borderRadius: 17,
     height: 60,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 34,
-    alignSelf: 'center',
-    width: '55%',
+    alignSelf: "center",
+    width: "55%",
   },
   acceptText: {
     fontSize: 21,
-    fontWeight: '600',
+    fontWeight: "600",
     color: colors.white,
   },
 });

@@ -1,39 +1,38 @@
-
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { theme } from '../constants/theme';
+import { Image, StyleSheet, Text, View } from "react-native";
+import { theme } from "../constants/theme";
 
 const ranking = [
   {
-    id: '1',
-    name: 'Tefy',
-    weeks: '20 Semanas',
-    position: '1',
-    medal: require('../../assets/images/primero.png'),
-    avatar: require('../../assets/images/azafata.png'),
+    id: "1",
+    name: "Tefy",
+    weeks: "20 Semanas",
+    position: "1",
+    medal: require("../../assets/images/primero.png"),
+    avatar: require("../../assets/images/azafata.png"),
   },
   {
-    id: '2',
-    name: 'Ana',
-    weeks: '13 Semanas',
-    position: '2',
-    medal: require('../../assets/images/segundo.png'),
-    avatar: require('../../assets/images/mucama.png'),
+    id: "2",
+    name: "Ana",
+    weeks: "13 Semanas",
+    position: "2",
+    medal: require("../../assets/images/segundo.png"),
+    avatar: require("../../assets/images/mucama.png"),
   },
   {
-    id: '3',
-    name: 'Tú',
-    weeks: '12 Semanas',
-    position: '3',
-    medal: require('../../assets/images/tercero.png'),
-    avatar: require('../../assets/images/foto_Xiomaro.png'),
+    id: "3",
+    name: "Tú",
+    weeks: "12 Semanas",
+    position: "3",
+    medal: require("../../assets/images/tercero.png"),
+    avatar: require("../../assets/images/foto_Xiomaro.png"),
   },
   {
-    id: '4',
-    name: 'Ramón',
-    weeks: '2 Semanas',
-    position: '4',
+    id: "4",
+    name: "Ramón",
+    weeks: "2 Semanas",
+    position: "4",
     medal: undefined,
-    avatar: require('../../assets/images/graduado.png'),
+    avatar: require("../../assets/images/graduado.png"),
   },
 ];
 
@@ -47,13 +46,10 @@ export default function ProfileRanking() {
         {ranking.map((person) => (
           <View
             key={person.id}
-            style={[
-              styles.row,
-              person.position === '3' && styles.currentUser,
-            ]}
+            style={[styles.row, person.position === "3" && styles.currentUser]}
           >
             <View style={styles.medalContainer}>
-              {person.position !== '4' ? (
+              {person.position !== "4" ? (
                 <Image
                   source={person.medal}
                   style={styles.medal}
@@ -85,12 +81,12 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: theme.text.heading,
-    fontWeight: '600',
+    fontWeight: "600",
     color: theme.colors.text,
   },
   title: {
     fontSize: theme.text.display,
-    fontWeight: '900',
+    fontWeight: "900",
     color: theme.colors.text,
     marginBottom: theme.spacing.sm,
   },
@@ -99,8 +95,8 @@ const styles = StyleSheet.create({
   },
   row: {
     height: 74,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: theme.colors.card,
     borderWidth: 1,
     borderColor: theme.colors.border,
@@ -120,21 +116,21 @@ const styles = StyleSheet.create({
   medalContainer: {
     width: 65,
     height: 65,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   medal: {
     width: 55,
-    height: 65,
+    height: 55,
   },
   position: {
     fontSize: theme.text.display,
-    fontWeight: '900',
+    fontWeight: "900",
     color: theme.colors.text,
   },
   avatar: {
     width: 60,
-    height: 60,
+    height: 56.74,
     borderRadius: theme.radius.full,
     backgroundColor: theme.colors.avatarBackground,
   },
