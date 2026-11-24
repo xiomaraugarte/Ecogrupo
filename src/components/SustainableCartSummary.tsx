@@ -1,51 +1,65 @@
+import { useRouter } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import {
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
+import { useShopping } from '@/context/ShoppingContext';
 
-import { colors } from '@/constants/colors';
-import { sustainableProducts } from '@/data/sustainableProducts';
+interface Props {
+  onViewCart?: () => void;
+}
 
-type Props = {
-  quantities: Record<string, number>;
-  onViewCart: () => void;
-};
+export default function SustainableCartSummary({ onViewCart }: Props) {
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
 
-export default function SustainableCartSummary({
-  quantities,
-  onViewCart,
-}: Props) {
-  let totalPrice = 0;
-  let totalProducts = 0;
+  const {
+    totalPrice,
+    totalProducts,
+    totalPoints,
+  } = useShopping();
 
-  sustainableProducts.forEach(product => {
-    const quantity = quantities[product.id] || 0;
+  if (totalProducts === 0) return null;
 
-    totalPrice += product.price * quantity;
-    totalProducts += quantity;
-  });
+  const handleOpenCart = () => {
+    if (onViewCart) {
+      onViewCart();
+      return;
+    }
 
-  if (totalProducts === 0) {
-    return null;
-  }
+    router.push('/cart');
+  };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {
+          paddingBottom: Math.max(insets.bottom, 16),
+        },
+      ]}
+    >
       <View style={styles.summary}>
-        <Text style={styles.total}>{totalPrice} Bs</Text>
+        <Text style={styles.points}>
+          {totalPoints} puntos
+        </Text>
 
-        <Text style={styles.count}>
+        <Text style={styles.detail}>
+          {totalPrice} bs
+        </Text>
+
+        <Text style={styles.detail}>
           {totalProducts}{' '}
           {totalProducts === 1 ? 'producto' : 'productos'}
         </Text>
       </View>
 
       <Pressable
-        style={styles.button}
-        onPress={onViewCart}
+        onPress={handleOpenCart}
+        style={({ pressed }) => [
+          styles.button,
+          pressed && { opacity: 0.85 },
+        ]}
+        accessibilityRole="button"
       >
         <Text style={styles.buttonText}>
           Ver carrito
@@ -57,35 +71,43 @@ export default function SustainableCartSummary({
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 24,
-    paddingVertical: 16,
-    backgroundColor: colors.background,
+    paddingHorizontal: 22,
+    paddingTop: 18,
+    gap: 18,
   },
+
   summary: {
     flex: 1,
   },
-  total: {
+
+  points: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#000000',
+    marginBottom: 2,
+  },
+
+  detail: {
     fontSize: 18,
-    color: colors.text,
+    lineHeight: 23,
+    color: '#111111',
   },
-  count: {
-    fontSize: 16,
-    color: colors.text,
-  },
+
   button: {
-    backgroundColor: colors.primary,
-    borderRadius: 15,
-    paddingVertical: 14,
-    paddingHorizontal: 30,
+    flex: 1.5,
+    height: 56,
+    borderRadius: 18,
+    backgroundColor: '#155941',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   buttonText: {
-    color: colors.white,
-    fontSize: 18,
+    color: '#FFFFFF',
+    fontSize: 21,
     fontWeight: '600',
   },
 });
