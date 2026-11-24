@@ -1,10 +1,9 @@
-
 import { useRouter } from 'expo-router';
 import {
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 import { colors } from '@/constants/colors';
@@ -16,7 +15,7 @@ export default function SustainableCategories() {
     <View style={styles.container}>
       <Pressable
         style={styles.button}
-        onPress={() => router.replace('/(tabs)/shopping')}
+        onPress={() => router.back()}
       >
         <Text style={styles.text}>
           Canasta{'\n'}familiar
@@ -40,6 +39,7 @@ const styles = StyleSheet.create({
     gap: 16,
     marginTop: 18,
   },
+
   button: {
     width: 91,
     height: 49,
@@ -50,10 +50,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'transparent',
   },
+
   selected: {
     backgroundColor: colors.sustainableSelected,
     borderWidth: 3,
   },
+
   text: {
     fontSize: 16,
     lineHeight: 18,

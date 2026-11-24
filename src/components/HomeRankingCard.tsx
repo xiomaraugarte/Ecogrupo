@@ -1,10 +1,12 @@
-
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { colors } from '@/constants/colors';
 
 export default function HomeRankingCard() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -22,7 +24,15 @@ export default function HomeRankingCard() {
             <View style={styles.progress} />
           </View>
 
-          <Pressable style={styles.button}>
+          <Pressable
+            style={styles.button}
+            onPress={() =>
+              router.navigate({
+                pathname: '/(tabs)/profile',
+                params: { section: 'ranking' },
+              })
+            }
+          >
             <Text style={styles.buttonText}>
               Ver ranking
             </Text>

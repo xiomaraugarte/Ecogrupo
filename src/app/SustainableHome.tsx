@@ -1,10 +1,10 @@
-
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
-    Alert,
-    ScrollView,
-    StyleSheet,
-    Text,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -15,34 +15,33 @@ import SustainableProductDetail from '@/components/SustainableProductDetail';
 import SustainableProductList from '@/components/SustainableProductList';
 
 import { colors } from '@/constants/colors';
+import { useShopping } from '@/context/ShoppingContext';
 import type { SustainableProduct } from '@/data/sustainableProducts';
 
 export default function SustainableHome() {
+  const router = useRouter();
+
   const [selectedProduct, setSelectedProduct] =
     useState<SustainableProduct | null>(null);
 
-  const [quantities, setQuantities] =
-    useState<Record<string, number>>({});
-
-  const increaseQuantity = (id: string) => {
-    setQuantities(previous => ({
-      ...previous,
-      [id]: (previous[id] || 0) + 1,
-    }));
-  };
-
-  const decreaseQuantity = (id: string) => {
-    setQuantities(previous => ({
-      ...previous,
-      [id]: Math.max(0, (previous[id] || 0) - 1),
-    }));
-  };
+  const {
+    quantities,
+    increase,
+    decrease,
+    totalProducts,
+  } = useShopping();
 
   const viewCart = () => {
-    Alert.alert(
-      'Carrito',
-      'Aquí se mostrará el carrito de compras.'
-    );
+    if (totalProducts === 0) {
+      Alert.alert(
+        'Carrito vacío',
+        'No tienes ningún producto añadido al carrito',
+        [{ text: 'Aceptar' }]
+      );
+      return;
+    }
+
+    router.push('/cart');
   };
 
   return (
@@ -73,18 +72,13 @@ export default function SustainableHome() {
 
             <SustainableProductList
               quantities={quantities}
-              onIncrease={increaseQuantity}
-              onDecrease={decreaseQuantity}
+              onIncrease={increase}
+              onDecrease={decrease}
               onSelect={setSelectedProduct}
             />
-
-            {/* COMPONENTS: add each one right above this line */}
           </ScrollView>
 
-          <SustainableCartSummary
-            quantities={quantities}
-            onViewCart={viewCart}
-          />
+          <SustainableCartSummary onViewCart={viewCart} />
         </>
       )}
     </SafeAreaView>
@@ -96,13 +90,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+
   scroll: {
     flex: 1,
   },
+
   content: {
     paddingHorizontal: 16,
     paddingBottom: 45,
   },
+
   description: {
     fontSize: 16,
     lineHeight: 22,
