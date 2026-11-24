@@ -1,18 +1,20 @@
-import { useRouter } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useShopping } from '@/context/ShoppingContext';
 
 export default function ShoppingCartSummary() {
-  const router = useRouter();
   const { totalPoints, totalPrice, totalProducts } = useShopping();
   const insets = useSafeAreaInsets();
 
   if (totalProducts === 0) return null;
 
   const openCart = () => {
-    router.push('/cart');
+    Alert.alert(
+      'Tu carrito',
+      `${totalProducts} productos\n${totalPoints} puntos\nBs ${totalPrice}`
+    );
   };
 
   return (
@@ -23,11 +25,9 @@ export default function ShoppingCartSummary() {
         <Text style={styles.points}>
           {totalPoints} puntos
         </Text>
-
         <Text style={styles.detail}>
           {totalPrice} bs
         </Text>
-
         <Text style={styles.detail}>
           {totalProducts} {totalProducts === 1 ? 'producto' : 'productos'}
         </Text>

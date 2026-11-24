@@ -1,3 +1,4 @@
+
 import {
   createContext,
   ReactNode,
@@ -5,9 +6,7 @@ import {
   useState,
 } from 'react';
 
-import type { CartItem } from '@/components/CartItemList';
-import { shoppingProducts } from '@/data/shoppingProducts';
-import { sustainableProducts } from '@/data/sustainableProducts';
+import { shoppingProducts } from '../data/shoppingProducts';
 
 type Category = 'family' | 'home';
 type Quantities = Record<string, number>;
@@ -18,23 +17,12 @@ interface ShoppingState {
   setCategory: (value: Category) => void;
   increase: (id: string) => void;
   decrease: (id: string) => void;
-  remove: (id: string) => void;
-  clearCart: () => void;
-  items: CartItem[];
   totalPoints: number;
   totalPrice: number;
   totalProducts: number;
 }
 
 const ShoppingContext = createContext<ShoppingState | null>(null);
-
-const allProducts = [
-  ...shoppingProducts,
-  ...sustainableProducts.map(product => ({
-    ...product,
-    points: 0,
-  })),
-];
 
 export function ShoppingProvider({
   children,
@@ -45,53 +33,33 @@ export function ShoppingProvider({
   const [category, setCategory] = useState<Category>('family');
 
   const increase = (id: string) => {
-    setQuantities(previous => ({
-      ...previous,
-      [id]: (previous[id] || 0) + 1,
+    setQuantities(prev => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1,
     }));
   };
 
   const decrease = (id: string) => {
-    setQuantities(previous => ({
-      ...previous,
-      [id]: Math.max(0, (previous[id] || 0) - 1),
+    setQuantities(prev => ({
+      ...prev,
+      [id]: Math.max(0, (prev[id] || 0) - 1),
     }));
   };
 
-  const remove = (id: string) => {
-    setQuantities(previous => ({
-      ...previous,
-      [id]: 0,
-    }));
-  };
-
-  const clearCart = () => {
-    setQuantities({});
-  };
-
-  const items: CartItem[] = allProducts
-    .filter(product => (quantities[product.id] || 0) > 0)
-    .map(product => ({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      points: product.points,
-      quantity: quantities[product.id],
-      image: product.image,
-    }));
-
-  const totalPrice = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const totalPoints = shoppingProducts.reduce(
+    (sum, product) =>
+      sum + product.points * (quantities[product.id] || 0),
     0
   );
 
-  const totalPoints = items.reduce(
-    (sum, item) => sum + item.points * item.quantity,
+  const totalPrice = shoppingProducts.reduce(
+    (sum, product) =>
+      sum + product.price * (quantities[product.id] || 0),
     0
   );
 
-  const totalProducts = items.reduce(
-    (sum, item) => sum + item.quantity,
+  const totalProducts = Object.values(quantities).reduce(
+    (sum, quantity) => sum + quantity,
     0
   );
 
@@ -103,9 +71,6 @@ export function ShoppingProvider({
         setCategory,
         increase,
         decrease,
-        remove,
-        clearCart,
-        items,
         totalPoints,
         totalPrice,
         totalProducts,
@@ -118,7 +83,6 @@ export function ShoppingProvider({
 
 export function useShopping() {
   const context = useContext(ShoppingContext);
-
   if (!context) {
     throw new Error(
       'useShopping debe utilizarse dentro de ShoppingProvider'

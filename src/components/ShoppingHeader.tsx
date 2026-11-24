@@ -1,34 +1,10 @@
+
 import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import {
-  Alert,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-
-import { useShopping } from '@/context/ShoppingContext';
+import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function ShoppingHeader() {
   const router = useRouter();
-  const { totalProducts } = useShopping();
-
-  const openCart = () => {
-    if (totalProducts === 0) {
-      Alert.alert(
-        'Carrito vacío',
-        'No tienes ningún producto añadido al carrito',
-        [{ text: 'Aceptar' }]
-      );
-
-      return;
-    }
-
-    router.push('/cart');
-  };
-
   return (
     <View style={styles.container}>
       <Image
@@ -43,17 +19,29 @@ export default function ShoppingHeader() {
         </Text>
 
         <Pressable
-          style={styles.cartButton}
-          onPress={openCart}
-          accessibilityRole="button"
-          accessibilityLabel="Abrir carrito"
-        >
-          <MaterialIcons
-            name="shopping-cart"
-            size={33}
-            color="#FFFFFF"
-          />
-        </Pressable>
+      style={styles.cartButton}
+      onPress={() =>
+        Alert.alert(
+          'Carrito',
+          'Abre el resumen de tu compra',
+          [
+            {
+              text: 'OK',
+              onPress: () => router.push('/cart'),
+            },
+          ]
+        )
+      }
+      accessibilityRole="button"
+      accessibilityLabel="Abrir carrito"
+    >
+      <MaterialIcons
+        name="shopping-cart"
+        size={33}
+        color="#FFFFFF"
+      />
+    </Pressable>
+
       </View>
     </View>
   );
